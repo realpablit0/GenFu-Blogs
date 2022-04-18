@@ -1,11 +1,11 @@
 const { application } = require("express");
 const mongoose = require("mongoose");
-const dbkey = require("../private/dbkey.json");
+const dbkey = require("../../resources/private/dbkey.json");
 // Get uri from private dbkey.json
-const uri = dbkey.uri;
+const DBuri = dbkey.uri;
 
 // Get DB Models
-const Login = require("./dbmodels/login")
+const Login = require("../services/account/modules/models/login")
     /*
     console.log("Connecting to DB");
     mongoose.connect(uri)
@@ -25,20 +25,30 @@ const Login = require("./dbmodels/login")
     */
 
 
+class DB {
+    constructor(uri, model) {
+        this.uri = uri;
+        this.model = model;
+    }
+    connect() {
+
+    }
+}
+
 // Create new Account
 async function createAccount(acc) {
     // check if acc has all info
     if (!acc.email || !acc.username || !acc.password) {
         return false;
     }
-    mongoose.connect(uri)
+    await mongoose.connect(DBuri)
         .then(() => {
-            await Login.exists({ email: acc.email })
+            await Login.exists({ email: "bla" });
         })
 
     return true;
 }
-console.log(createAccount({
+console.log(await createAccount({
     email: "test@mail.com",
     username: "TestUser47",
     password: "MySecretPW"
