@@ -1,7 +1,11 @@
 {
+    "__broker__": {
+        "url": "127.0.0.1",
+        "port": 8080
+    },
     "app": {
         "url": "127.0.0.1",
-        "port": 8081
+        "port": 881
     },
     "account": {
         "url": "127.0.0.1",
@@ -28,5 +32,5 @@
         "port": 101
     },
 
-    "serverInstances": 1
+    "__serverInstances__": 1
 }

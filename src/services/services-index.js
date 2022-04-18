@@ -13,13 +13,13 @@ function startServer(serviceIndex, instances) {
 function startServices() {
     var serverInstances;
     var serviceServerArray = []
-    serviceRouting.serverInstances > 1 ? serverInstances = serviceRouting.serverInstances : serverInstances = 1
+    serviceRouting.serverInstances > 1 ? serverInstances = serviceRouting.__serverInstances__ : serverInstances = 1
     for (let i in serviceRouting) {
-        if (i === 'serverInstances') return serviceServerArray
-        var server = startServer(i, serverInstances)
-        serviceServerArray.push(server)
+        if (!i.startsWith('__')) {
+            var server = startServer(i, serverInstances)
+            serviceServerArray.push(server)
+        }
     }
-
+    return serviceServerArray
 }
-
 module.exports.startServices = startServices;

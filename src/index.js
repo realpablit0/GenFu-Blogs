@@ -1,5 +1,6 @@
 const http = require('http');
 const fs = require('fs');
+const brokerConfig = require('../resources/services-routing.json').__broker__
 const broker = require('./broker/broker-index');
 
 const normalizePort = val => {
@@ -13,7 +14,7 @@ const normalizePort = val => {
     }
     return false;
 };
-const port = normalizePort('8080');
+const port = normalizePort(brokerConfig.port);
 broker.set('port', port);
 
 const errorHandler = error => {
