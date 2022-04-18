@@ -1,0 +1,32 @@
+{
+    "app": {
+        "url": "127.0.0.1",
+        "port": 8081
+    },
+    "account": {
+        "url": "127.0.0.1",
+        "port": 3001
+    },
+    "business": {
+        "url": "127.0.0.1",
+        "port": 2001
+    },
+    "content": {
+        "url": "127.0.0.1",
+        "port": 9081
+    },
+    "event": {
+        "url": "127.0.0.1",
+        "port": 7001
+    },
+    "interaction": {
+        "url": "127.0.0.1",
+        "port": 6081
+    },
+    "analytic": {
+        "url": "127.0.0.1",
+        "port": 101
+    },
+
+    "serverInstances": 1
+}

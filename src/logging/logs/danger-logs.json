@@ -1,0 +1,7 @@
+{
+    "uniqueId": {
+        "message": "this is the message of the log !",
+        "timestamp": 1650100904164,
+        "tags": ["crash", "timeout", "service-error"]
+    }
+}
