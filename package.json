@@ -1,10 +1,13 @@
 {
-  "dependencies": {
-    "bcrypt": "^5.0.1",
-    "body-parser": "^1.20.0",
-    "express": "^4.17.3",
-    "fetch": "^1.1.0",
-    "mongoose": "^6.3.0",
-    "uuid": "^8.3.2"
-  }
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "body-parser": "^1.20.0",
+        "express": "^4.17.3",
+        "fetch": "^1.1.0",
+        "mongoose": "^6.3.0",
+        "uuid": "^8.3.2"
+    },
+    "scripts": {
+        "start": "src/index.js"
+    }
 }

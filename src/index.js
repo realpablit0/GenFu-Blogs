@@ -1,11 +1,9 @@
 const http = require('http');
-const fs = require('fs');
 const brokerConfig = require('../resources/services-routing.json').__broker__
 const broker = require('./broker/broker-index');
 
 const normalizePort = val => {
     const port = parseInt(val, 10);
-
     if (isNaN(port)) {
         return val;
     }

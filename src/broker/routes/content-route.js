@@ -8,9 +8,18 @@ const contentCofig = require('../../../resources/services-routing.json').content
 
 var router = express.Router();
 router.get('*', (req, res) => {
-    new ServiceRequest().send(req, { 'url': contentCofig.url, 'port': contentCofig.port }, 'GET').then(data => {
-        res.send(data)
-    })
+    console.log('yes');
+    // new ServiceRequest().send(req, { 'url': contentCofig.url, 'port': contentCofig.port }, 'GET').then(data => {
+    //     res.send(data)
+    // })
+    res.send('successss get')
+})
+
+router.post('*', (req, res) => {
+    // new ServiceRequest().send(req, { 'url': contentCofig.url, 'port': contentCofig.port }, 'POST').then(data => {
+    //     res.send(data)
+    // })
+    res.send('successss POSt')
 })
 
 module.exports = router;

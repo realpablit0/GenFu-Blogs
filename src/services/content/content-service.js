@@ -7,9 +7,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json())
 app.use(bodyParser.raw());
 
-app.get('*', (req, res) => {
+app.use(`/blog`, require('./routes/blog-route'))
+app.use(`/category`, require('./routes/category-route'))
 
-    res.json({ 'success content server': true, 'error': null })
+
+app.get('/', (req, res) => {
+    res.send('success content service API')
 })
-
 module.exports = app;

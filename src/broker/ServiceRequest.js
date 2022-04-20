@@ -1,4 +1,4 @@
-const http = require('http')
+const fetch = require('fetch')
 const { ServerWorkload } = require('../server-traffic-modules/ServerWorkload')
 class ServiceRequest {
     /* load balancer */
@@ -12,6 +12,11 @@ class ServiceRequest {
 
     /* send request to server */
     send(req, server, method) {
+        headers = {
+            'Content-Type': 'application/json',
+            'Access-Control-Request-Headers': '*',
+            'api-key': connection.API_KEY
+        }
         this.req = req
         return new Promise((resolve, reject) => {
             this.getLoadBalancePort(server).then(port => {
@@ -21,20 +26,11 @@ class ServiceRequest {
                     path: this.req.path,
                     method: method
                 }
-
-                // http request to server && send service response to client
-                const req = http.request(this.options, response => {
-                    response.on('data', d => {
-                        var resData = Buffer.from(d).toString()
-                        resolve(resData)
-                    })
+                fetchUrl(`${this.server.url}:${server.port}/${req.path}`, { headers: this.headers, method: 'POST', payload: JSON.stringify(payload) }, (error, meta, body) => {
+                    if (!error) {
+                        resolve(body.toString())
+                    } else if (error) reject(error)
                 })
-
-                req.on('error', error => {
-                    reject(error)
-                })
-
-                req.end()
             }).catch(e => { throw e })
         })
     }
