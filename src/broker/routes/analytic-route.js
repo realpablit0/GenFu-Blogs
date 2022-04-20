@@ -2,7 +2,7 @@ const bodyParser = require('body-parser')
 const express = require('express')
 const path = require('path')
 
-const { ServiceRequest } = require('../service-request')
+const { ServiceRequest } = require('../ServiceRequest')
 const analyticCofig = require('../../../resources/services-routing.json').analytic
 
 var router = express.Router();

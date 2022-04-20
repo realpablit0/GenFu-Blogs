@@ -1,6 +1,6 @@
 const bodyParser = require('body-parser')
 const express = require('express')
-const { ServiceRequest } = require('../service-request')
+const { ServiceRequest } = require('../ServiceRequest')
 const appConfig = require('../../../resources/services-routing.json').app
 
 var router = express.Router();

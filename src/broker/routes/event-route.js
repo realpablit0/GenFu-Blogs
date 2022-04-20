@@ -3,7 +3,7 @@ const express = require('express')
 const path = require('path')
 
 
-const { ServiceRequest } = require('../service-request')
+const { ServiceRequest } = require('../ServiceRequest')
 const eventCofig = require('../../../resources/services-routing.json').event
 
 var router = express.Router();

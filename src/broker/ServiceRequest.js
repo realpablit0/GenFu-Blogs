@@ -12,21 +12,16 @@ class ServiceRequest {
 
     /* send request to server */
     send(req, server, method) {
-        headers = {
-            'Content-Type': 'application/json',
-            'Access-Control-Request-Headers': '*',
-            'api-key': connection.API_KEY
-        }
         this.req = req
         return new Promise((resolve, reject) => {
             this.getLoadBalancePort(server).then(port => {
-                this.options = {
-                    hostname: server.url,
-                    port: port,
-                    path: this.req.path,
-                    method: method
+                var options = {
+                    headers: this.headers,
+                    method: method,
+                    payload: JSON.stringify(payload)
                 }
-                fetchUrl(`${this.server.url}:${server.port}/${req.path}`, { headers: this.headers, method: 'POST', payload: JSON.stringify(payload) }, (error, meta, body) => {
+
+                fetchUrl(`${this.server.url}:${server.port}/${req.path}`, options, (error, meta, body) => {
                     if (!error) {
                         resolve(body.toString())
                     } else if (error) reject(error)

@@ -23,6 +23,8 @@ class MongoDB {
     }
 
     find(filter) {
+        // filter:
+        // {uuid': 'slkdfncsdlv,sxd,v47'} --> arr[{'uuid': 'slkdfncsdlv,sxd,v47', 'lvl': 42}]
         return new Promise((resolve, reject) => {
             var payload = {
                 "database": this.database,
@@ -39,6 +41,8 @@ class MongoDB {
     }
 
     update(filter, data) {
+        // data:
+        // {"username": "newC00lUs3rN4m3"}
         return new Promise((resolve, reject) => {
             var operator = data.length > 1 ? 'updateMany' : 'updateOne';
             var payload = {
@@ -58,8 +62,7 @@ class MongoDB {
 
     insert(data) {
         return new Promise((resolve, reject) => {
-            var operator;
-            typeof(data) === Array ? operator = 'insertMany' : operator = 'insertOne'
+            var operator = typeof(data) === Array ? 'insertMany' : 'insertOne'
             var payload = {
                 "database": this.database,
                 "collection": this.collection,
@@ -73,12 +76,9 @@ class MongoDB {
             })
         })
     }
-
     delete(filter, all) {
         return new Promise((resolve, reject) => {
-            var operator;
-            if (all) operator = 'deleteMany'
-            else operator = 'deleteOne'
+            var operator = all === true ? 'deleteMany' : 'deleteOne';
             var payload = {
                 "database": this.database,
                 "collection": this.collection,
@@ -92,11 +92,10 @@ class MongoDB {
             })
         })
     }
+
     replace(filter, data, all) {
         return new Promise((resolve, reject) => {
-            var operator;
-            if (all) operator = 'replaceMany'
-            else operator = 'replaceOne'
+            var operator = all === true ? 'replaceMany' : 'replaceOne';
             var payload = {
                 "database": this.database,
                 "collection": this.collection,
@@ -115,12 +114,12 @@ class MongoDB {
 
 module.exports.MongoDB = MongoDB;
 
-const mongoDB = new MongoDB({
-    'database': 'Account',
-    'collection': 'Account-Logins',
-    'dataSource': 'GenFu-Blogs',
-    'API_KEY': require('../../../resources/private/dbkey.json').API_KEY
-})
+// const mongoDB = new MongoDB({
+//     'database': 'Account',
+//     'collection': 'Account-Logins',
+//     'dataSource': 'GenFu-Blogs',
+//     'API_KEY': require('../../../resources/private/dbkey.json').API_KEY
+// })
 
 // mongoDB.find({ "username": "yourusername" }).then(data => {
 //     console.log(data);

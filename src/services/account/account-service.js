@@ -8,7 +8,7 @@ app.use(bodyParser.raw());
 
 
 app.use(`/`, require('./routes/account-route'))
-app.use(`/profile`, require('./routes/prfile-route'))
+app.use(`/profile`, require('./routes/profile-route'))
 
 
 module.exports = app;
